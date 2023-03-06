@@ -1,0 +1,11 @@
+pipeline {
+  agent any
+  stages {
+    stage('run collection') {
+      steps {
+        sh 'docker run -t postman/newman run -h'
+        sh 'docker run -t postman/newman run -h' --workdir /etc/newman -t postman/newman run https://api.postman.com/collections/26200859-61c5d09e-312d-4f2a-9ce1-64de41764c26?access_key=PMAT-01GTVBYB5J16111C99850PQDKY --color off --disable-unicode'
+      }
+    }
+  }
+}
